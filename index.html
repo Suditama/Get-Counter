@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcukator App</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fad0c4, #9ae5ff);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        h2 {
+            position: absolute;
+            bottom: 750px;
+            left: 760px;
+            color: white;
+            text-align: center;
+            font-size: 50px;
+
+        }
+
+        h2::first-letter {
+            color: rgb(235, 228, 228);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: 900;
+            font-size: 80px;
+            transform: translateY(10px);
+            transition: ease-in 2s;
+            text-shadow: #ff9a9e 1px 3px 1px;
+        }
+
+        .container {
+            width: 350px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            border-left: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+
+        }
+
+        .text {
+            color: white;
+            font-size: 30px;
+        }
+
+        .display {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            border-left: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+            padding: 15px;
+        }
+
+        .input {
+            width: 100%;
+            height: 100px;
+            border: none;
+            outline: none;
+            background: transparent;
+            color: white;
+            font-size: 30px;
+            text-align: right;
+            pointer-events: none;
+        }
+
+        .button {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 19px;
+            margin-top: 22px;
+        }
+
+        .btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            border-left: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Calculator Apps</h2>
+    <div class="container">
+        <div class="row">
+            <div class="text">
+            </div>
+            <div class="display">
+                <input type="text" id="input" class="input" readonly>
+            </div>
+            <div class="button" id="buttons">
+                <button class="btn" id="clear" onclick="clearAll()">CE</button>
+                <button class="btn" id="clear" onclick="clearSingle()">C</button>
+                <button class="btn" id="divide" onclick="display('%')">%</button>
+                <button class="btn" id="multiply" onclick="display('*')">*</button>
+                <button class="btn" id="number" onclick="display(7)">7</button>
+                <button class="btn" id="number" onclick="display(8)">8</button>
+                <button class="btn" id="number" onclick="display(9)">9</button>
+                <button class="btn" id="subtract" onclick="display('-')">-</button>
+                <button class="btn" id="number" onclick="display(4)">4</button>
+                <button class="btn" id="number" onclick="display(5)">5</button>
+                <button class="btn" id="number" onclick="display(6)">6</button>
+                <button class="btn" id="add" onclick="display('+')">+</button>
+                <button class="btn" id="number" onclick="display(1)">1</button>
+                <button class="btn" id="number" onclick="display(2)">2</button>
+                <button class="btn" id="number" onclick="display(3)">3</button>
+                <button class="btn" id="equal" onclick="calculate()">=</button>
+            </div>
+        </div>
+    </div>
+</body>
+    <script>
+        const input = document.getElementById("input");
+        const buttons = document.getElementById("buttons");
+        const clear = document.getElementById("clear");
+        const equal = document.getElementById("equal");
+        
+        const display = (value) => {
+            input.value += value;
+        }
+        const calculate = () => {
+            input.value = eval(input.value);
+        }
+        const clearAll = () => {
+            input.value = "";
+        }
+        const clearSingle = () => {
+            input.value = input.value.slice(0, -1);
+        }
+
+
+
+    </script>
+
+</html>
